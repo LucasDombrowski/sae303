@@ -1,0 +1,332 @@
+@import "https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap";
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #9f9;
+  --black: #080808;
+  --half-black: #08080880;
+}
+
+body {
+  color: var(--green);
+  background: #080808;
+  font-family: Pixelify Sans, sans-serif;
+}
+
+.menu {
+  z-index: 1;
+  background: var(--black);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+
+.menu figure {
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: var(--black);
+  border: solid var(--green) 2px;
+  z-index: 1;
+  box-shadow: 0 10px 20px var(--green);
+  border-radius: 100%;
+  width: auto;
+  height: 25%;
+  margin: 0;
+  padding: 3rem;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  translate: -50%;
+}
+
+.menu img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.menu_container {
+  width: 100%;
+  max-width: 1000px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  translate: -50%;
+}
+
+.menu_container_row {
+  border: solid var(--green) 2px;
+  cursor: pointer;
+  background: var(--black);
+  border-top: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  transition: all .2s;
+  display: flex;
+  position: relative;
+}
+
+.menu_container_row > div:first-child > span:first-child {
+  margin-right: 2rem;
+}
+
+.menu_container_row:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+.menu_container_row:first-child, .menu_container_row:first-child:after {
+  border-top: solid var(--green) 2px;
+}
+
+.menu_container_row:after {
+  content: "";
+  border: solid var(--green) 2px;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(2px);
+  border-top: none;
+  width: 80%;
+  height: 100%;
+  transition: all .2s;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: calc(-50% - 3px) -120%;
+}
+
+.menu_container_row:hover:after {
+  background: var(--green);
+}
+
+.menu_container_row span {
+  font-size: 2rem;
+}
+
+.menu_container_row i {
+  font-size: 3rem;
+  transition: all .2s;
+}
+
+.menu_container_row:hover i {
+  rotate: 90deg;
+}
+
+.hidden {
+  opacity: 0;
+  scale: 0;
+}
+
+#template_menu {
+  z-index: 2;
+}
+
+.chart-display {
+  z-index: 3;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  background: var(--half-black);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+
+.chart-display:not(.hidden) {
+  transition: opacity .5s;
+}
+
+#resolver-charts {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#resolver-charts > div:first-child {
+  width: 100%;
+  max-width: 500px;
+}
+
+.chart-display .error {
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.chart-display .back {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 5rem;
+  transition: all .2s;
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
+}
+
+.chart-display .back:hover {
+  color: var(--green);
+}
+
+#execution-times-chart {
+  flex-direction: column;
+  display: flex;
+}
+
+#execution-times-chart > div:first-child {
+  padding-block: 3rem;
+}
+
+#execution-times-chart > div:nth-last-child(2) {
+  flex-grow: 1;
+  width: 100%;
+}
+
+#execution-times-chart > div:nth-last-child(2) > div {
+  justify-content: center;
+  max-height: calc(100% - 3rem);
+  margin-inline: auto;
+  display: flex;
+  position: relative;
+}
+
+.resolver-select, .problem-select {
+  border: solid var(--green) 2px;
+  color: #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 200px;
+  max-width: 300px;
+  margin-inline: auto;
+  font-size: 2rem;
+  position: relative;
+}
+
+.resolver-select .current-value, .problem-select .current-value {
+  background: var(--black);
+  padding: 1rem;
+}
+
+.resolver-select .available-values div, .problem-select .available-values div {
+  padding: 1rem;
+}
+
+.resolver-select .available-values div:hover, .problem-select .available-values div:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+.resolver-select .available-values, .problem-select .available-values {
+  border: solid var(--green) 2px;
+  transform-origin: top;
+  background: var(--black);
+  z-index: 1;
+  width: calc(100% + 4px);
+  transition: all .2s;
+  position: absolute;
+  top: 100%;
+  left: -2px;
+  overflow: hidden;
+  scale: 1 0;
+}
+
+.resolver-select.active .available-values, .problem-select.active .available-values {
+  scale: 1;
+}
+
+#problem-chart > div {
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100% - 3rem);
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#resolver-charts .resolver-select, #resolver-charts .problem-select, #resolver-compare .resolver-select, #resolver-compare .problem-select {
+  min-width: 100%;
+}
+
+#resolver-charts label, #resolver-compare label {
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  display: block;
+}
+
+#resolver-charts > div:nth-last-child(2) > div, #resolver-compare > div:nth-last-child(2) > div {
+  margin-block: 2rem;
+}
+
+#resolver-charts > div {
+  margin-inline: 5rem;
+}
+
+.check {
+  text-transform: uppercase;
+  color: #9f9;
+  background: var(--black);
+  border: none;
+  border: solid var(--green) 2px;
+  cursor: pointer;
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  font-family: Pixelify Sans, sans-serif;
+  font-size: 2rem;
+  transition: all .2s;
+}
+
+.check:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+#resolver-compare {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#resolver-compare > div:first-child {
+  width: 45%;
+  height: 100%;
+  max-height: calc(100% - 3rem);
+  position: relative;
+}
+
+#resolver-compare > div:first-child > canvas {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50%;
+}
+
+#resolver-compare > div {
+  margin-inline: 5rem;
+}
+
+#execution-times-chart {
+  z-index: 5;
+}
+
+/*# sourceMappingURL=index.2cdaf7bc.css.map */

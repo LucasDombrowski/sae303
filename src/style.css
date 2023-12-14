@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+html{
+    font-size: 62.5%;
+}
+*{
+    box-sizing: border-box;
+}
+:root{
+    --green: #99ff99;
+    --black: #080808;
+    --half-black: rgba(8, 8, 8, 0.5);
+}
+body{
+    background: #080808;
+    color: var(--green);
+    font-family: 'Pixelify Sans', sans-serif;
+}
+.menu{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow-y: scroll;
+    background: var(--black);
+}
+.menu figure{
+    height: 25%;
+    aspect-ratio: 1/1;
+    width: auto;
+    object-fit: contain;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    translate: -50% 0;
+    border-radius: 100%;
+    background: var(--black);
+    border: solid var(--green) 2px;
+    z-index: 1;
+    padding: 3rem;
+    box-shadow: 0 10px 20px var(--green);
+}
+.menu img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+}
+.menu_container{
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    translate: -50% 0;
+    width: 100%;
+}
+.menu_container_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    border: solid var(--green) 2px;
+    border-top: none;
+    cursor: pointer;
+    position: relative;
+    background: var(--black);
+    transition: all 0.2s;
+}
+.menu_container_row > div:first-child > span:first-child{
+    margin-right: 2rem;
+}
+.menu_container_row:hover{
+    background: var(--green);
+    color: var(--black);
+}
+.menu_container_row:first-child{
+    border-top: solid var(--green) 2px;
+}
+.menu_container_row:first-child::after{
+    border-top: solid var(--green) 2px;
+}
+.menu_container_row::after{
+    content: "";
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    translate: calc(-50% + -3px) -120%;
+    border: solid var(--green) 2px;
+    border-top: none;
+    pointer-events: none;
+    z-index: -1;
+    transition: all 0.2s;
+    filter: blur(2px);
+}
+.menu_container_row:hover::after{
+    background: var(--green);
+}
+.menu_container_row span{
+    font-size: 2rem;
+}
+.menu_container_row i{
+    font-size: 3rem;
+    transition: all 0.2s;
+}
+.menu_container_row:hover i{
+    rotate: 90deg;
+}
+.hidden {
+    scale: 0;
+    opacity: 0;
+}
+
+#template_menu{
+    z-index: 2;
+}
+.chart-display{
+    position: fixed;
+    z-index: 3;
+    backdrop-filter: blur(5px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--half-black);
+    overflow-y: scroll;
+}
+.chart-display:not(.hidden){
+    transition: opacity 0.5s;
+}
+#resolver-charts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#resolver-charts > div:first-child{
+    max-width: 500px;
+    width: 100%;
+}
+
+.chart-display .error{
+    font-size: 5rem;
+    text-transform: uppercase;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    text-align: center;
+    cursor: pointer;
+}
+.chart-display .back{
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.chart-display .back:hover{
+    color: var(--green);
+}
+#execution-times-chart{
+    display: flex;
+    flex-direction: column;
+}
+#execution-times-chart > div:first-child{
+    padding-block: 3rem;
+}
+#execution-times-chart > div:nth-last-child(2){
+    width: 100%;
+    flex-grow: 1;
+}
+#execution-times-chart > div:nth-last-child(2) > div{
+    max-height: calc(100% - 3rem);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-inline: auto;
+}
+
+.resolver-select, .problem-select{
+    width: fit-content;
+    min-width: 200px;
+    margin-inline: auto;
+    border: solid var(--green) 2px;
+    font-size: 2rem;
+    position: relative;
+    max-width: 300px;
+    color: white;
+}
+.resolver-select .current-value, .problem-select .current-value{
+    padding: 1rem;
+    background: var(--black);
+}
+.resolver-select .available-values div, .problem-select .available-values div{
+    padding: 1rem;
+}
+.resolver-select .available-values div:hover, .problem-select .available-values div:hover{
+    background: var(--green);
+    color: var(--black);
+}
+.resolver-select .available-values, .problem-select .available-values{
+    position: absolute;
+    width: calc(100% + 4px);
+    left: -2px;
+    top: 100%;
+    border: solid var(--green) 2px;
+    transition: all 0.2s;
+    transform-origin: top;
+    scale: 1 0;
+    background: var(--black);
+    z-index: 1;
+    overflow: hidden;
+}
+.resolver-select.active .available-values, .problem-select.active .available-values {
+    scale: 1;
+}
+#problem-chart > div{
+    height: 100%;
+    max-height: calc(100% - 3rem);
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+#resolver-charts .resolver-select, #resolver-charts .problem-select, #resolver-compare .resolver-select, #resolver-compare .problem-select{
+    min-width: 100%;
+}
+#resolver-charts label, #resolver-compare label{
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+#resolver-charts > div:nth-last-child(2) > div, #resolver-compare > div:nth-last-child(2) > div{
+    margin-block: 2rem;
+}
+#resolver-charts > div{
+    margin-inline: 5rem;
+}
+.check{
+    text-transform: uppercase;
+    color: #99ff99;
+    background: var(--black);
+    font-size: 2rem;
+    border: none;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Pixelify Sans', sans-serif;
+    border: solid var(--green) 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.check:hover{
+    background: var(--green);
+    color: var(--black);
+}
+#resolver-compare{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#resolver-compare > div:first-child{
+    position: relative;
+    width: 45%;
+    height: 100%;
+    max-height: calc(100% - 3rem);
+}
+#resolver-compare > div:first-child > canvas{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 0;
+}
+
+
+#resolver-compare > div{
+    margin-inline: 5rem;
+}
+#execution-times-chart{
+    z-index: 5;
+}
+
+
+
+

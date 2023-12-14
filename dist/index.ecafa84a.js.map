@@ -1,0 +1,1 @@
+{"mappings":"AAAA,SAAS,cAAc,CAAC,aAAa,gBAAgB,CAAC,SAAQ;IAC1D,QAAQ,GAAG,CAAC;AAChB","sources":["src/js/test.js"],"sourcesContent":["document.getElementById(\"resolvers\").addEventListener(\"click\",()=>{\r\n    console.log(\"test\");\r\n})"],"names":[],"version":3,"file":"index.ecafa84a.js.map","sourceRoot":"/__parcel_source_root/"}

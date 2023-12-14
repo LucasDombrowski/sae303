@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAE 303</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+    <body>
+        <div id="main-menu" class="menu">
+            <figure>
+                <img src="imgs/logo.svg" alt="Logo">
+            </figure>
+            <div class="menu_container">
+                <div class="menu_container_row" id="resolvers">
+                    <span>Resolvers</span>
+                    <i class='bx bx-right-arrow'></i>
+                </div>
+                <div class="menu_container_row" id="problems">
+                    <span>Problems</span>
+                    <i class='bx bx-right-arrow'></i>
+                </div>
+            </div>
+        </div>
+        <div id="template-menu" class="menu hidden">
+            <figure>
+                <img src="imgs/logo.svg" alt="Logo">
+            </figure>
+            <div class="menu_container">
+
+            </div>
+        </div>
+        <div id="resolver-charts" class="hidden chart-display">
+            <div>
+                <canvas id="resolver-pie-chart"></canvas>
+            </div>
+            <div>
+                <div>
+                    <label>First resolver</label>
+                    <div class="resolver-select">
+                        <div class="current-value first-resolver"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <div>
+                    <label>Second resolver</label>
+                    <div class="resolver-select">
+                        <div class="current-value second-resolver"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <div>
+                    <label>Problem</label>
+                    <div class="problem-select">
+                        <div class="current-value selected-problem"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <button class="check">Check</button>
+            </div>
+            <button class="back"><i class='bx bx-arrow-back'></i></button>
+        </div>
+        <div id="problem-chart" class="hidden chart-display">
+            <div>
+                <canvas id="problem-bar-chart" width="0"></canvas>
+                <div class="error hidden">no satisfied result found</div>
+            </div> 
+            <button class="back"><i class='bx bx-arrow-back'></i></button>
+        </div>
+        <div id="execution-times-chart" class="hidden chart-display">
+            <div>
+                <div class="resolver-select">
+                    <div class="current-value"></div>
+                    <div class="available-values">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <canvas id="execution-time-line-chart"></canvas>
+                </div>
+            </div>
+            <button class="back"><i class='bx bx-arrow-back'></i></button>
+        </div>
+        <div id="resolver-compare" class="hidden chart-display">
+            <div>
+                <canvas id="resolver-compare-scatter-chart"></canvas>
+                <div class="error hidden">
+                    Both of the problems were resolved instantly
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label>First resolver</label>
+                    <div class="resolver-select">
+                        <div class="current-value first-resolver"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <div>
+                    <label>Second resolver</label>
+                    <div class="resolver-select">
+                        <div class="current-value second-resolver"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <div>
+                    <label>Problem</label>
+                    <div class="problem-select">
+                        <div class="current-value selected-problem"></div>
+                        <div class="available-values"></div>
+                    </div> 
+                </div>
+                <button class="check">Check</button>
+            </div>
+            <button class="back"><i class='bx bx-arrow-back'></i></button>
+        </div>
+    </body>
+    <script src="js/charts.js" type="module"></script>
+    
+</html>
